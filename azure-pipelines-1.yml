@@ -14,5 +14,5 @@ steps:
 - script:
       echo Hello, world!
       echo "this is my new file" > newfile.txt
-      mkdir -p mydir/
+      mkdir -p mydir
 
