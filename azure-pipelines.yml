@@ -1,0 +1,21 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  filename: 'newfile.txt'
+  dirname: 'mydir'
+
+steps:
+- script: |
+    echo "This is a new file" > $(filename)
+    mkdir -p $(dirname)
+    mv $(filename) $(dirname)/
+  displayName: 'Create and move a file to another directory'
