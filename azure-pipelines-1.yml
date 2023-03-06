@@ -14,9 +14,10 @@ steps:
       mv myfile.txt mydir/
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/mydir'
-    ArtifactName: 'my-artifact'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
     publishLocation: 'Container'
+
 - task: Bash@3
   inputs:
     targetType: 'inline'
