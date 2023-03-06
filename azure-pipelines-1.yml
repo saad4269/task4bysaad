@@ -1,0 +1,24 @@
+trigger:
+  - azure-pipelines-again
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo "Hello World!" > myfile.txt
+      mkdir mydir
+      mv myfile.txt mydir/
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'mydir'
+    ArtifactName: 'my-artifact'
+
+- task: Bash@3
+  inputs:
+    script: |
+      mkdir mynewdir
+      cp -r $(Build.ArtifactStagingDirectory)/my-artifact $(System.DefaultWorkingDirectory)/mynewdir/
