@@ -4,7 +4,10 @@
 # https://aka.ms/yaml
 #trigger master branch
 trigger:
-- master
+ branches:
+  include:
+    - azure-pipelines-master
+
 
 #use ubuntu image from pool agent
 pool:
