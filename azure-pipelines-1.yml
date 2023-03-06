@@ -6,7 +6,7 @@
 trigger:
  branches:
   include:
-    - azure-pipelines-master
+    - azure-pipelines-again
 
 
 #use ubuntu image from pool agent
@@ -22,5 +22,5 @@ steps:
   displayName: "create new file and move into another dir"
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(System.DefaultWorkingDirectory)/mydir'
-    artifactName: 'MyArtifact'
+    PathtoPublish: '$(Build.Repository.LocalPath)/mydir'
+    ArtifactName: 'my-artifact'
