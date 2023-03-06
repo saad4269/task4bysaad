@@ -20,4 +20,10 @@ steps:
       mkdir -p mydir
       mv newfile.txt mydir/
   displayName: "create new file and move into another dir"
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/$(mydir)'
+    ArtifactName: 'MyArtifact'
+    publishLocation: 'Container'
+ 
 
