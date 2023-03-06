@@ -10,11 +10,8 @@ steps:
     targetType: 'inline'
     script: |
       echo "Hello World!" > myfile.txt
-      echo "myfile.txt created."
       mkdir mydir
       mv myfile.txt mydir/
-      echo "myfile.txt moved to mydir directory."
-
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: 'mydir'
@@ -22,11 +19,6 @@ steps:
 
 - task: Bash@3
   inputs:
-    targetType: 'inline'
     script: |
-      # Create the new directory
       mkdir mynewdir
-
-      # Copy the artifact to the new directory
       cp -r $(Build.ArtifactStagingDirectory)/my-artifact $(System.DefaultWorkingDirectory)/mynewdir/
-      echo "Artifact copied to mynewdir directory."
