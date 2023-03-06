@@ -1,30 +1,32 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-#trigger master branch
 trigger:
- branches:
-  include:
-    - azure-pipelines-again
+  - azure-pipelines-again
 
-
-#use ubuntu image from pool agent
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
 steps:
-- script: |
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
       echo "Hello World!" > myfile.txt
+      echo "myfile.txt created."
       mkdir mydir
       mv myfile.txt mydir/
+      echo "myfile.txt moved to mydir directory."
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.Repository.LocalPath)/mydir'
+    PathtoPublish: 'mydir'
     ArtifactName: 'my-artifact'
+
 - task: Bash@3
   inputs:
+    targetType: 'inline'
     script: |
+      # Create the new directory
       mkdir mynewdir
-      cp -r $(Build.ArtifactStagingDirectory)/my-artifact mynewdir/
+
+      # Copy the artifact to the new directory
+      cp -r $(Build.ArtifactStagingDirectory)/my-artifact $(System.DefaultWorkingDirectory)/mynewdir/
+      echo "Artifact copied to mynewdir directory."
