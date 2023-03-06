@@ -23,4 +23,4 @@ steps:
     targetType: 'inline'
     script: |
       mkdir mynewdir
-      cp -r $(System.DefaultWorkingDirectory)/mydir/my-artifact/myfile.txt $(System.DefaultWorkingDirectory)/mynewdir/
+      cp -r $(System.DefaultWorkingDirectory)/mydir $(System.DefaultWorkingDirectory)/mynewdir/
