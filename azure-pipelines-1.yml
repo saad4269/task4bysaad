@@ -25,3 +25,8 @@ steps:
   inputs:
     PathtoPublish: '$(Build.Repository.LocalPath)/mydir'
     ArtifactName: 'my-artifact'
+- task: Bash@3
+  inputs:
+    script: |
+      mkdir mynewdir
+      cp -r $(Build.ArtifactStagingDirectory)/my-artifact mynewdir/
