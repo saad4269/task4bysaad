@@ -14,13 +14,14 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script:
-      echo Hello, world!
-      echo "this is my new file" > newfile.txt
-      mkdir -p mydirec
-      mv newfile.txt mydirec/
-  displayName: "create new file and move into another dir"
+- script: |
+      echo "Hello World!" > myfile.txt
+      echo "myfile.txt created."
+      mkdir mydir
+      mv myfile.txt mydir/
+      echo "myfile.txt moved to mydir directory."
+
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(System.DefaultWorkingDirectory)/mydirec'
-    artifactName: 'MyArtifact'
+    PathtoPublish: '$(Build.Repository.LocalPath)/mydir'
+    ArtifactName: 'my-artifact'
