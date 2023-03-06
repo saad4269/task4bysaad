@@ -15,8 +15,9 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
+    ArtifactName: 'my-artifact'
     publishLocation: 'Container'
+
 
 - task: Bash@3
   inputs:
