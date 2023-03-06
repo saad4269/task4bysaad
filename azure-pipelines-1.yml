@@ -17,10 +17,10 @@ steps:
 - script:
       echo Hello, world!
       echo "this is my new file" > newfile.txt
-      mkdir -p mydir
-      mv newfile.txt mydir/
+      mkdir -p mydirec
+      mv newfile.txt mydirec/
   displayName: "create new file and move into another dir"
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(System.DefaultWorkingDirectory)/$(dirname)'
+    pathtoPublish: '$(System.DefaultWorkingDirectory)/mydirec'
     artifactName: 'MyArtifact'
