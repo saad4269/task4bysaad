@@ -22,5 +22,5 @@ steps:
   displayName: "create new file and move into another dir"
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.Repository.LocalPath)/mydir/'
-    ArtifactName: 'my-artifact'
+    pathtoPublish: '$(System.DefaultWorkingDirectory)/$(dirname)'
+    artifactName: 'MyArtifact'
