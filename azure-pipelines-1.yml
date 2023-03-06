@@ -22,7 +22,7 @@ steps:
   displayName: "create new file and move into another dir"
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(mydir)'
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/$(mydir)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
