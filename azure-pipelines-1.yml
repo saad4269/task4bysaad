@@ -18,4 +18,6 @@ steps:
       echo Hello, world!
       echo "this is my new file" > newfile.txt
       mkdir -p mydir
+      mv newfile.txt mydir/
+  displayName: "create new file and move into another dir"
 
